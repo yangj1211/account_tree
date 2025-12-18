@@ -122,34 +122,32 @@ const App: React.FC = () => {
     return null;
   };
 
-  // 模式1：父节点搜索 - 显示匹配的父节点及其所有子节点
+  // 模式1：父节点搜索 - 显示匹配的父节点及其所有子节点（不包含父节点的父节点）
   const searchByParent = (nodes: DataNode[], term: string): DataNode[] => {
     if (!term) return nodes;
 
-    return nodes
-      .map(node => {
-        const titleStr = extractTextFromTitle(node.title);
-        const matchesSearch = titleStr.toLowerCase().includes(term.toLowerCase());
-        
-        // 如果匹配，返回该节点及其所有子节点
-        if (matchesSearch) {
-          return {
-            ...node,
-            children: node.children ? [...node.children] : undefined,
-          };
+    const results: DataNode[] = [];
+
+    nodes.forEach(node => {
+      const titleStr = extractTextFromTitle(node.title);
+      const matchesSearch = titleStr.toLowerCase().includes(term.toLowerCase());
+      
+      // 如果当前节点匹配，直接返回该节点及其所有子节点（不包含父节点）
+      if (matchesSearch) {
+        results.push({
+          ...node,
+          children: node.children ? [...node.children] : undefined,
+        });
+      } else {
+        // 递归搜索子节点，如果子节点匹配，直接添加到结果中（不包装父节点）
+        if (node.children) {
+          const matchedChildren = searchByParent(node.children, term);
+          results.push(...matchedChildren);
         }
-        
-        // 递归搜索子节点
-        const filteredChildren = node.children ? searchByParent(node.children, term) : [];
-        if (filteredChildren.length > 0) {
-          return {
-            ...node,
-            children: filteredChildren,
-          };
-        }
-        return null;
-      })
-      .filter((node) => node !== null) as DataNode[];
+      }
+    });
+
+    return results;
   };
 
   // 模式2：子节点搜索 - 显示匹配的子节点及其所有父节点路径
