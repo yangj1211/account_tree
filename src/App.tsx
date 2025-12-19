@@ -3,6 +3,8 @@ import { Tree, Input, Card, Typography, Segmented, Tabs, Button, message } from 
 import type { DataNode } from 'antd/es/tree';
 import { TreeNode as TreeNodeType } from './types';
 import accountTreeData from '../account_tree.json';
+import companyTreeData from '../company_structure.json';
+import divisionTreeData from '../division_structure.json';
 import './App.css';
 
 const { Title } = Typography;
@@ -10,6 +12,7 @@ const { Search } = Input;
 
 type SearchMode = 'parent' | 'child';
 type DisplayMode = 'tree' | 'array' | 'list' | 'both';
+type LevelType = 'account' | 'company' | 'division';
 
 const App: React.FC = () => {
   const [treeData, setTreeData] = useState<DataNode[]>([]);
@@ -18,6 +21,7 @@ const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchMode, setSearchMode] = useState<SearchMode>('parent');
   const [displayMode, setDisplayMode] = useState<DisplayMode>('tree');
+  const [levelType, setLevelType] = useState<LevelType>('account');
 
   // 按code字母顺序排序节点
   const sortNodesByCode = (nodes: TreeNodeType[]): TreeNodeType[] => {
@@ -66,14 +70,45 @@ const App: React.FC = () => {
     return keys;
   };
 
+  // 根据层级类型获取对应的数据
+  const getDataByLevel = (level: LevelType): TreeNodeType[] => {
+    switch (level) {
+      case 'account':
+        return accountTreeData as TreeNodeType[];
+      case 'company':
+        return companyTreeData as TreeNodeType[];
+      case 'division':
+        return divisionTreeData as TreeNodeType[];
+      default:
+        return accountTreeData as TreeNodeType[];
+    }
+  };
+
+  // 根据层级类型获取标题
+  const getTitleByLevel = (level: LevelType): string => {
+    switch (level) {
+      case 'account':
+        return '合并科目结构树查看器';
+      case 'company':
+        return '公司结构树查看器';
+      case 'division':
+        return '事业部结构树查看器';
+      default:
+        return '合并科目结构树查看器';
+    }
+  };
+
   useEffect(() => {
-    // 先对原始数据进行排序，然后转换为Tree格式
-    const sortedData = sortNodesByCode(accountTreeData as TreeNodeType[]);
+    // 根据选择的层级加载对应的数据
+    const rawData = getDataByLevel(levelType);
+    const sortedData = sortNodesByCode(rawData);
     setOriginalTreeData(sortedData);
     const convertedData = convertToTreeData(sortedData);
     setTreeData(convertedData);
     setExpandedKeys(getDefaultExpandedKeys(convertedData));
-  }, []);
+    // 切换层级时清空搜索
+    setSearchTerm('');
+  }, [levelType]);
 
   // 从React元素中提取文本内容
   const extractTextFromTitle = (title: React.ReactNode | ((data: DataNode) => React.ReactNode)): string => {
@@ -356,9 +391,19 @@ const App: React.FC = () => {
     <div className="app">
       <Card style={{ margin: '20px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
         <Title level={2} style={{ marginBottom: 24, textAlign: 'center' }}>
-          合并科目结构树查看器
+          {getTitleByLevel(levelType)}
         </Title>
-        <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'center' }}>
+        <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 16 }}>
+          <Segmented
+            options={[
+              { label: '科目层级', value: 'account' },
+              { label: '公司层级', value: 'company' },
+              { label: '事业部层级', value: 'division' },
+            ]}
+            value={levelType}
+            onChange={(value) => setLevelType(value as LevelType)}
+            size="large"
+          />
           <Segmented
             options={[
               { label: '父节点搜索（显示所有子节点）', value: 'parent' },
