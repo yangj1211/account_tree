@@ -5,6 +5,7 @@ import { TreeNode as TreeNodeType } from './types';
 import accountTreeData from '../account_tree.json';
 import companyTreeData from '../company_structure.json';
 import divisionTreeData from '../division_structure.json';
+import deptTreeData from '../dept_structure.json';
 import './App.css';
 
 const { Title } = Typography;
@@ -12,7 +13,7 @@ const { Search } = Input;
 
 type SearchMode = 'parent' | 'child';
 type DisplayMode = 'tree' | 'array' | 'list' | 'both';
-type LevelType = 'account' | 'company' | 'division';
+type LevelType = 'account' | 'company' | 'division' | 'dept';
 
 const App: React.FC = () => {
   const [treeData, setTreeData] = useState<DataNode[]>([]);
@@ -79,6 +80,8 @@ const App: React.FC = () => {
         return companyTreeData as TreeNodeType[];
       case 'division':
         return divisionTreeData as TreeNodeType[];
+      case 'dept':
+        return deptTreeData as TreeNodeType[];
       default:
         return accountTreeData as TreeNodeType[];
     }
@@ -93,6 +96,8 @@ const App: React.FC = () => {
         return '公司结构树查看器';
       case 'division':
         return '事业部结构树查看器';
+      case 'dept':
+        return '部门层级结构树查看器';
       default:
         return '合并科目结构树查看器';
     }
@@ -399,6 +404,7 @@ const App: React.FC = () => {
               { label: '科目层级', value: 'account' },
               { label: '公司层级', value: 'company' },
               { label: '事业部层级', value: 'division' },
+              { label: '部门层级', value: 'dept' },
             ]}
             value={levelType}
             onChange={(value) => setLevelType(value as LevelType)}
