@@ -1,0 +1,337 @@
+[
+  {
+    "code": "T_ALL",
+    "name": "所有类别",
+    "children": [
+      {
+        "code": "T_NONE",
+        "name": "类型不区分",
+        "children": []
+      },
+      {
+        "code": "TAGE",
+        "name": "账龄",
+        "children": [
+          {
+            "code": "TAGE04",
+            "name": "账龄3年以上",
+            "children": [
+              {
+                "code": "TAGE0401",
+                "name": "3-4年",
+                "children": []
+              },
+              {
+                "code": "TAGE0402",
+                "name": "4-5年",
+                "children": []
+              },
+              {
+                "code": "TAGE0403",
+                "name": "5年以上",
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "TAGE10",
+            "name": "账龄2年以内",
+            "children": [
+              {
+                "code": "TAGE01",
+                "name": "1年以内",
+                "children": [
+                  {
+                    "code": "TAGE0104",
+                    "name": "91-180天",
+                    "children": []
+                  },
+                  {
+                    "code": "TAGE0105",
+                    "name": "181-365天",
+                    "children": []
+                  },
+                  {
+                    "code": "TAGE0106",
+                    "name": "0-90天",
+                    "children": [
+                      {
+                        "code": "TAGE0101",
+                        "name": "0-30天",
+                        "children": []
+                      },
+                      {
+                        "code": "TAGE0102",
+                        "name": "31-60天",
+                        "children": []
+                      },
+                      {
+                        "code": "TAGE0103",
+                        "name": "61-90天",
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "code": "TAGE02",
+                "name": "1-2年",
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "TAGE30",
+            "name": "账龄2-3年",
+            "children": [
+              {
+                "code": "TAGE03",
+                "name": "2-3年",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "TAST",
+        "name": "资产分类",
+        "children": [
+          {
+            "code": "TAST10",
+            "name": "固定资产",
+            "children": [
+              {
+                "code": "TAST101",
+                "name": "房屋及建筑物",
+                "children": [
+                  {
+                    "code": "TAST10100",
+                    "name": "JST-固定资产-房屋建筑物",
+                    "children": []
+                  },
+                  {
+                    "code": "TAST10110",
+                    "name": "JST-固定资产-建筑物附属工程",
+                    "children": []
+                  },
+                  {
+                    "code": "TAST10200",
+                    "name": "JST-固定资产-房屋建筑物修缮",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "code": "TAST102",
+                "name": "机器设备",
+                "children": [
+                  {
+                    "code": "TAST10300",
+                    "name": "JST-固定资产-机器设备",
+                    "children": []
+                  },
+                  {
+                    "code": "TAST10400",
+                    "name": "JST-固定资产-检测设备",
+                    "children": []
+                  },
+                  {
+                    "code": "TAST10410",
+                    "name": "JST-固定资产-检测工具",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "code": "TAST103",
+                "name": "运输工具",
+                "children": [
+                  {
+                    "code": "TAST10500",
+                    "name": "JST-固定资产-生产运输设备",
+                    "children": []
+                  },
+                  {
+                    "code": "TAST10510",
+                    "name": "JST-固定资产-非生产运输设备",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "code": "TAST104",
+                "name": "电子及其他设备",
+                "children": [
+                  {
+                    "code": "TAST10600",
+                    "name": "JST-固定资产-办公电子设备",
+                    "children": []
+                  },
+                  {
+                    "code": "TAST10700",
+                    "name": "JST-固定资产-家具及设施",
+                    "children": []
+                  },
+                  {
+                    "code": "TAST10710",
+                    "name": "JST-固定资产-机械工具",
+                    "children": []
+                  },
+                  {
+                    "code": "TAST10800",
+                    "name": "JST-固定资产-计算机硬件",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "code": "TAST30",
+            "name": "无形资产",
+            "children": [
+              {
+                "code": "TAST301",
+                "name": "土地使用权",
+                "children": [
+                  {
+                    "code": "TAST30100",
+                    "name": "JST-无形资产-土地使用权",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "code": "TAST302",
+                "name": "软件",
+                "children": [
+                  {
+                    "code": "TAST30200",
+                    "name": "JST-无形资产-软件",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "code": "TAST303",
+                "name": "技术成果",
+                "children": [
+                  {
+                    "code": "TAST30300",
+                    "name": "JST-无形资产-专利",
+                    "children": []
+                  },
+                  {
+                    "code": "TAST30400",
+                    "name": "JST-无形资产-非专利技术",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "code": "TAST304",
+                "name": "其他",
+                "children": [
+                  {
+                    "code": "TAST30500",
+                    "name": "JST-无形资产-商标",
+                    "children": []
+                  },
+                  {
+                    "code": "TAST30600",
+                    "name": "JST-无形资产-特许权使用费",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "TCSR",
+        "name": "境内外客户",
+        "children": [
+          {
+            "code": "TCSR01",
+            "name": "境内客户",
+            "children": []
+          },
+          {
+            "code": "TCSR02",
+            "name": "境外客户",
+            "children": []
+          }
+        ]
+      },
+      {
+        "code": "TFUA",
+        "name": "功能范围",
+        "children": [
+          {
+            "code": "TFUA1000",
+            "name": "制造费用",
+            "children": []
+          },
+          {
+            "code": "TFUA2000",
+            "name": "销售费用",
+            "children": []
+          },
+          {
+            "code": "TFUA3000",
+            "name": "管理费用",
+            "children": []
+          },
+          {
+            "code": "TFUA4000",
+            "name": "研发费用",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "code": "T_ALL_H2",
+    "name": "所有类别",
+    "children": []
+  },
+  {
+    "code": "TAGE20",
+    "name": "账龄2-5年",
+    "children": []
+  },
+  {
+    "code": "TAST20100",
+    "name": "JST-在建工程-建筑工程",
+    "children": []
+  },
+  {
+    "code": "TAST20110",
+    "name": "JST-在建工程-建筑物附属工程",
+    "children": []
+  },
+  {
+    "code": "TAST20200",
+    "name": "JST-在建工程-需安装设备",
+    "children": []
+  },
+  {
+    "code": "TAST20300",
+    "name": "JST-在建工程-软件及实施",
+    "children": []
+  },
+  {
+    "code": "TAST20400",
+    "name": "JST-在建工程-技改大修工程",
+    "children": []
+  },
+  {
+    "code": "TAST29900",
+    "name": "JST-在建工程-其他",
+    "children": []
+  }
+]
